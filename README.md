@@ -1,0 +1,1 @@
+akumah masih pemula
