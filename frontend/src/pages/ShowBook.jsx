@@ -12,7 +12,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/books/${id}`)
+      .get(`${import.meta.env.VITE_API_URI}/books/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);
@@ -24,13 +24,15 @@ const ShowBook = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      <BackButton />
+    <div className="p-4 flex flex-col items-center justify-center h-screen">
+      <div className="absolute top-0 left-0 p-4">
+        <BackButton />
+      </div>
       <h1 className="text-3xl my-4">Show Book</h1>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4">
+        <div className="flex flex-col border-2 border-sky-400 rounded-xl p-4">
           <div className="my-4">
             <span className="text-xl mr-4 text-gray-500">Id</span>
             <span>{book._id}</span>
